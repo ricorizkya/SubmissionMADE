@@ -1,13 +1,13 @@
 package com.example.submissionjetpackpro.activity
 
-import android.app.Fragment
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.submissionjetpackpro.R
 import com.example.submissionjetpackpro.databinding.ActivityMainBinding
-import com.example.submissionjetpackpro.fragment.FavoriteFragment
-import com.example.submissionjetpackpro.fragment.MoviesFragment
-import com.example.submissionjetpackpro.fragment.TVShowsFragment
+import com.example.submissionjetpackpro.fragment.favorite.FavoriteFragment
+import com.example.submissionjetpackpro.fragment.movies.MoviesFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,15 +19,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val moviesFragment = MoviesFragment()
-        val tvShowsFragment = TVShowsFragment()
         val favoriteFragment = FavoriteFragment()
 
         makeCurrentFragment(moviesFragment)
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.movie_menu -> makeCurrentFragment(moviesFragment)
-                R.id.tv_menu -> makeCurrentFragment(tvShowsFragment)
-                R.id.favorite_menu -> makeCurrentFragment(favoriteFragment)
+                R.id.favorite_menu -> {
+                    val uri = Uri.parse("example://favorites")
+                    startActivity(Intent(Intent.ACTION_VIEW, uri))
+                }
             }
             true
         }

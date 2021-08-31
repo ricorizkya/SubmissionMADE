@@ -5,14 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher_foreground"
         android:label="@string/netflix"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SubmissionJetpackPro">
-        <activity android:name=".activity.DetailTVShowActivity"></activity>
-        <activity android:name=".activity.DetailMovieActivity" />
+        <activity android:name=".detail.DetailMovieActivity" />
         <activity
             android:name=".activity.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
